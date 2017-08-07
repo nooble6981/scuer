@@ -1,0 +1,806 @@
+<html>
+<head>
+  <style>
+    html, body {
+      overflow: hidden;
+      font-family: Segoe UI;
+      padding: 0px;
+      margin: 0px;
+      width: 100%%;
+      height: 100%%;
+      border: 1px solid black;
+    }
+
+    body {
+      background-color: blue;
+      background-repeat: stretch;
+      flow: vertical;
+    }
+
+    :focus {
+      outline: 1px dotted white -4px;
+    }
+
+    a:link:focus {
+      outline: 1px dotted white 0px;
+    }
+
+
+    div#Root {
+      flow: vertical;
+      width: 100%%;
+      height: 100%%;
+    }
+
+    div#Body {
+      flow: vertical;
+      margin: *;
+      width: 100%%;
+      height: 100%%;
+    }
+
+    div#Frame {
+      background-image: url(bmp:authui.dll/#12223);
+      background-repeat: no-repeat;
+      margin: * * 0 *;
+      width: 190px;
+      height: 190px;
+    }
+
+    div#UserPicture {
+      position: relative;
+      left: 32px;
+      top: 32px;
+      width: 126px;
+      height: 126px;
+      margin: 0px;
+      padding: 0;
+      background-image: url(bmp:#201);
+      background-repeat: no-repeat;
+      behavior: hbitmap;
+    }
+
+    div.VerticalContainer {
+      flow: vertical;
+    }
+
+    div.HorizontalContainer {
+      margin: 0 *;
+      flow: horizontal;
+    }
+
+    div.horizontal {
+      flow: horizontal;
+    }
+
+    widget#LangBtn {
+      padding: 0px;
+      background-color: transparent;
+      background-image: none;
+      margin: 8px 8px;
+      width: 16px;
+      height: 16px;
+      font-size: 10pt;
+      color: white;
+      display: block;
+    }
+
+      widget#LangBtn[hidden] {
+        display: none;
+      }
+
+    div.Text {
+      margin-bottom: 10px;
+      color: white;
+      font-size: 14pt;
+      text-align: center;
+    }
+
+    div.SmallText {
+      margin-bottom: 10px;
+      color: white;
+      font-size: 10pt;
+      text-align: center;
+    }
+
+    div#Message {
+      margin-top: 16px * 0;
+      text-wrap: unrestricted;
+    }
+
+    div#UpperMessage {
+      width: *;
+      margin: 10px 0px 5px 0px;
+      color: white;
+      font-size: 10pt;
+      text-wrap: unrestricted;
+    }
+
+      div#UpperMessage[hidden] {
+        visibility: collapse;
+      }
+
+    div#FieldsContainer {
+      margin: 0 *;
+    }
+
+    div#UsernameField, div#PasswordField {
+        margin-left: 20px;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      width: 250px;
+      flow: horizontal;
+      visibility: visible;
+      display: block;
+    }
+
+      div#UsernameField[hidden] {
+        display: none;
+      }
+
+      div#PasswordField[hidden] {
+        visibility: hidden;
+      }
+
+    widget#Username, widget#Password {
+      margin: * 0;
+      background-image: none;
+      background-color: white;
+      outline: 0px;
+      height: 20px;
+      padding: 0px;
+      border: 0px;
+      behavior: native-edit;
+    }
+
+    widget#Username
+    {
+        width: 270px;
+    }
+
+    widget#Password
+    {
+        width: 250px;
+    }
+
+      widget#Username:empty, widget#Password:empty {
+        color: gray;
+      }
+
+    widget#Logon {
+      margin: 8px 0px 0px 0px;
+      display: block;
+    }
+
+      widget#Logon[hidden] {
+        display: none;
+      }
+
+    widget#ShowPassword {
+      margin: * 0px * 0px;
+      padding: 0px;
+      height: 20px;
+      width: 20px;
+      border: 0px;
+      background-image: none;
+      background-color: white;
+      foreground-image: url(res:Eye.png);
+      foreground-position: 1 1;
+      foreground-repeat: stretch;
+    }
+
+      widget#ShowPassword[hidden] {
+          foreground-image: none;
+      }
+
+    widget.Submit {
+      margin: 0px 0px 0px 0px 4px;
+      padding: 0px;
+      border: 0px;
+      width: 30px;
+      height: 30px;
+      background-image: url(bmp:authui.dll/#12278);
+      background-repeat: stretch;
+    }
+
+      widget.Submit[hidden] {
+        visibility: hidden;
+      }
+
+      widget.Submit:active {
+        position: relative;
+        left: 1px;
+        top: 1px;
+      }
+
+      widget.Submit:hover {
+        background-image: url(bmp:authui.dll/#12277);
+      }
+
+    div#DomainNameText {
+      width: 100%%;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    div#DomainNameText, div#DomainName {
+      color: white;
+    }
+
+    div#DomainHelpContainer {
+      margin: 0px *;
+    }
+
+    a#DomainHelp {
+      text-align: center;
+      text-wrap: none;
+    }
+
+    div#MethodsContainer {
+      width: 216px;
+      margin: 0 *;
+      flow: horizontal-flow;
+    }
+
+    widget.Method {
+      width: 40px;
+      height: 40px;
+      margin: 4px 8px;
+      padding: 0px;
+      border: 2px solid transparent;
+      outline: 0px;
+    }
+
+      widget.Method[selected] {
+        border: 2px solid white;
+        outline: 0px;
+      }
+
+    div#DomainNameText, div#DomainName {
+      color: white;
+    }
+
+    div#StateNotice {
+      margin-bottom: 0 * 8px;
+    }
+
+    div#BrandContainer {
+      margin: 8px * 0px *;
+    }
+
+    #Branding {
+      margin: 0px * 16px *;
+    }
+
+    .ServiceText {
+      color: white;
+      font-size: 10pt;
+      text-wrap: none;
+      margin-top: 8px;
+    }
+
+    div#ErrorPage {
+      margin: * * 8px *;
+      display: none;
+    }
+
+    div#ErrorContainer {
+      margin: 0px 0px 16px 0px;
+      flow: horizontal;
+    }
+
+    div#ErrorImgContainer {
+      width: 32px;
+      height: 32px;
+      padding: 0px;
+      border: 0px;
+      margin: 0px 8px 0px 0px;
+    }
+
+    div#ErrorText {
+      vertical-align: middle;
+      color: white;
+      font-size: 10pt;
+      margin: 0px;
+      width: auto;
+      height: 100%%;
+    }
+
+    widget.button {
+      color: white;
+      background-repeat: expand;
+      background-image: url(bmp:authui.dll/#12268);
+      background-position: 3px 3px 3px 3px;
+      width: 160px;
+      height: 16px;
+      font-size: 12pt;
+    }
+
+      widget.button:active {
+        position: relative;
+        left: 1px;
+        top: 1px;
+      }
+
+
+    widget#ResetBtn {
+      width: 80px;
+      margin: 0px * 0px *;
+    }
+
+    widget#Back {
+      margin-top: 16px;
+    }
+  </style>
+  <script type="text/tiscript">
+
+      function show_element(el, show)
+      {
+          if (show)
+              el.attributes.remove("hidden");
+          else
+              el.attributes["hidden"] = "";
+      }
+
+      function init_common()
+      {
+          self.$(body).style#background-image = "url(file://" + System.path(#SYSTEM_BIN, "oobe/background.bmp") + ")";
+          self#UserPicture.style#background-image = "url(" + view.get_logo_src("bmp:#201") + ")";
+          show_element(self#UpperMessage, false);
+      }
+
+      function init_default()
+      {
+          init_common();
+          self#CustomCommand.style#display = "none";
+          self#Username.set_hint("Username");
+          set_username_submit_state(0);
+      }
+
+      function init_1N(methodName)
+      {
+          init_common();
+          switch_to_1N(methodName);
+      }
+
+      function init_get_pass()
+      {
+          init_default();
+          self#Back.text = "Cancel";
+          self#DomainNameText.style#display = "none";
+          self#DomainHelpContainer.style#display = "none";
+      }
+
+      function show_custom_command(text)
+      {
+          self#CustomCommand.style#display = "block";
+          self#CustomCommand.value = text;
+      }
+
+      function hide_custom_command()
+      {
+          self#CustomCommand.style#display = "none";
+      }
+
+
+
+      function switch_to_1N(methodName)
+      {
+          show_element(self#UsernameField, false);
+          self#FriendlyName.style#display = "none";
+          self#StateNotice.style#display = "none";
+          self#DomainNameText.style#display = "none";
+          self#DomainHelp.style#display = "none";
+          self#CustomCommand.style#display = "none";
+          show_element(self#UpperMessage, false);
+          self#MethodsContainer.style#display = "none";
+          self#MethodName.text = methodName;
+
+          set_username_submit_state(0);
+          set_password_submit_state(2);
+          self#Password.setState(Element.STATE_FOCUS);
+      }
+    function set_username(val)
+      {
+          show_element(self#UsernameField, false);
+          self#FriendlyName.style#display = "block";
+          self#FriendlyName.value = val;
+          self#DomainNameText.style#display = "none";
+          self#DomainHelp.style#display = "none";
+          self#Password.setState(Element.STATE_FOCUS);
+      }
+
+      function enable_otheruser(name)
+      {
+          self#FriendlyName.style#display = "none";
+          show_element(self#UsernameField, true);
+          self#Username.value = name;
+          self#DomainNameText.style#display = "block";
+          self#DomainHelp.style#display = "block";
+          if(name) {
+              self#Password.setState(Element.STATE_FOCUS);
+          }
+          else {
+              self#Username.setState(Element.STATE_FOCUS);
+          }
+      }
+
+      function set_domain_name(domain)
+      {
+          self#DomainName.value = domain;
+      }
+
+      function get_username()
+      {
+          if(!self#UsernameField.@.exists("hidden")) {
+              return self#Username.value;
+          }
+          if(self#FriendlyName.style#display == "block") {
+              return self#FriendlyName.value;
+          }
+          return null;
+      }
+
+      function set_submit_state(el, state)
+      {
+          switch (state)
+          {
+              case 0:
+                  el.@#disabled = true;
+                  el.attributes["hidden"] = "";
+                  break;
+              case 1:
+                  el.@#disabled = true;
+                  el.attributes.remove("hidden");
+                  break;
+              case 2:
+                  el.attributes.remove("hidden");
+                  el.@#disabled = undefined;
+                  break;
+          }
+      }
+
+      function set_username_submit_state(state)
+      {
+          set_submit_state(self#UsernameSubmit, state);
+      }
+
+      function set_password_submit_state(state)
+      {
+          set_submit_state(self#PasswordSubmit, state);
+      }
+
+
+      function enable_password(visible)
+      {
+          if(visible)
+          {
+              show_element(self#PasswordField, true);
+              if(self#UsernameField.@.exists("hidden") || self#Username.value.trim().length != 0)
+              {
+                  focus_password();
+              }
+          }
+          else
+          {
+              show_element(self#PasswordField, false);
+          }
+      }
+
+      function get_password()
+      {
+          return (self#Password.isVisible) ? self#Password.value : "";
+      }
+
+      function clear_passwords()
+      {
+          self#Password.value = "";
+      }
+
+      function focus_password()
+      {
+          self#Password.setState(Element.STATE_FOCUS);
+      }
+
+      function set_password_hint(s)
+      {
+          self#Password.set_hint(s);
+      }
+
+      function set_message(str)
+      {
+          if(str.length == 0) str = " ";
+          self#Message.value = str;
+          self#Message.update();
+      }
+
+      function reset_upper_message()
+      {
+          self#UpperMessage.value = "";
+          show_element(self#UpperMessage, false);
+      }
+
+      function set_upper_message(str)
+      {
+          if(str.length == 0) str = " ";
+          self#UpperMessage.value = str;
+          show_element(self#UpperMessage, true);
+      }
+
+      function show_error_page(str)
+      {
+          self#ErrorText.value = str;
+          self#Body.style#display = "none";
+          self#ErrorPage.style#display = "block";
+          self#ResetBtn.setState(Element.STATE_FOCUS);
+      }
+
+      function hide_error_page()
+      {
+          self#ErrorPage.style#display = "none";
+          self#Body.style#display = "block";
+      }
+
+
+      function set_state_notice(str)
+      {
+          self#StateNotice.value = str;
+      }
+
+      function set_bitmap(hbitmap)
+      {
+          self#UserPicture.@#hbitmap = hbitmap;
+          self#UserPicture.update();
+          return 0;
+      }
+
+      function set_lang_caps(str, caps)
+      {
+          set_lang_state(str.length != 0);
+          self#LangBtn.text = str;
+      }
+
+          function set_lang_state(show)
+          {
+              if (show)
+               self#LangBtn.attributes.remove("hidden");
+              else
+               self#LangBtn.attributes["hidden"] = "";
+          }
+
+          function removeSelected(cont)
+          {
+          var old = cont.$(widget[selected]);
+          if (old != undefined)
+              old.attributes.remove("selected");
+          }
+
+      function onMethodClicked(evt)
+      {
+          var cur = evt.target;
+          removeSelected(cur.parent);
+
+          cur.attributes["selected"] = "";
+          view.on_method_selected(cur.attributes["index"]);
+      }
+
+      function add_method(caption, logo, index)
+      {
+          var m = new Element("widget", "");
+          this.$(#MethodsContainer).append(m);
+          m.attributes["index"] = index;
+          m.attributes.addClass("Method");
+          m.attributes["type"] = "button";
+          m.attributes["title"] = caption;
+          m.subscribe(onMethodClicked, Event.BEHAVIOR_EVENT, Event.BUTTON_CLICK);
+          m.style#background-image = "url(" + logo + ")";
+      }
+
+      function select_method(id)
+      {
+          var cont = this.$(#MethodsContainer);
+          removeSelected(cont);
+          cont.$(widget[index={id}]).attributes["selected"] = "";
+      }
+
+      function set_method_name(name)
+      {
+          self#MethodName.text = name;
+      }
+
+      function enable_controls()
+      {
+          self#Back.@#disabled = undefined;
+          self#MethodsContainer.@#disabled = undefined;
+          self#PasswordField.@#disabled = undefined;
+          self#UsernameField.@#disabled = undefined;
+          self#CustomCommand.@#disabled = undefined;
+          self#DomainHelp.@#disabled = undefined;
+      }
+
+      function disable_controls()
+      {
+          self#Back.@#disabled = true;
+          self#MethodsContainer.@#disabled = true;
+          self#PasswordField.@#disabled = true;
+          self#UsernameField.@#disabled = true;
+          self#CustomCommand.@#disabled = true;
+          self#DomainHelp.@#disabled = true;
+      }
+
+      function set_colors(startColor, accentColor)
+      {
+          self.$(body).style#background-color = startColor;
+          self.$(#DomainHelp).style#color = accentColor;
+          self.$(#CustomCommand).style#color = accentColor;
+          self.$(#PasswordSubmit).style#background-color = accentColor;
+          self.$(#UsernameSubmit).style#background-color = accentColor;
+          self.$(#ResetBtn).style#background-color = accentColor;
+          self.$(#Logon).style#background-color = accentColor;
+          return 0;
+      }
+
+          function  show_logon(show)
+          {
+              if (show)
+               self#Logon.attributes.remove("hidden");
+              else
+               self#Logon.attributes["hidden"] = "";
+          }
+
+      function set_tablet_mode()
+      {
+       self.$(#Body).style#margin-top = 0;
+      }
+
+          function enablePasswordReveal(enable)
+          {
+              if (enable)
+              {
+              self#ShowPassword.@#disabled = undefined;
+              }
+              else
+              {
+              self#ShowPassword.@#disabled = true;
+              }
+          }
+
+      function showReveal(el, show)
+      {
+        if (el.@#disabled != undefined)
+            return;
+
+        if (show)
+          el.attributes.remove("hidden");
+        else
+          el.attributes["hidden"] = "";
+      }
+
+      function onChanged(name)
+      {
+          if (name == "Password")
+          {
+              view.on_password_changed(self#Password.value)
+              showReveal(self#ShowPassword, self#Password.value.length != 0);
+          }
+          if (name == "Username")
+          {
+              view.on_username_changed(self#Username.value)
+          }
+      }
+
+
+      function self #ShowPassword .onMouse(evt)
+      {
+          if(evt.type == Event.MOUSE_DOWN)
+          {
+              self#Password.password(0);
+          }
+          else if(evt.type == Event.MOUSE_UP)
+          {
+              self#Password.password(1);
+          }
+          return false;
+      }
+
+        function self #UsernameSubmit .onClick()
+        {
+            view.submit();
+        }
+
+        function self #PasswordSubmit .onClick()
+        {
+            view.submit();
+        }
+
+      function self #Logon .onClick()
+      {
+          view.submit();
+      }
+
+      function self #Back .onClick()
+      {
+          view.back();
+      }
+
+      function self #ResetBtn .onClick()
+      {
+          view.reset();
+      }
+
+      function self #DomainHelp .onClick()
+      {
+          view.domain_help();
+      }
+
+      function self #CustomCommand .onClick()
+      {
+          view.custom_command();
+      }
+
+
+  </script>
+</head>
+<body tabindex="-1">
+  <div id="Root">
+    <div>
+      <widget type="button" id="LangBtn" disabled>EN</widget>
+    </div>
+    <div id="Body">
+      <div id="Frame">
+        <div id="UserPicture" tabindex="-1" />
+      </div>
+      <div id="FriendlyName" class="Text">Me</div>
+      <div id="StateNotice" class="SmallText" />
+      <div class="VerticalContainer">
+        <div id="FieldsContainer">
+          <div id="MethodName" class="SmallText" />
+          <widget type="button" id="Logon" class="button" role="default-button">Logon</widget>
+          <div id="UsernameField">
+            <widget type="text" id="Username" novalue="User name"></widget>
+            <widget type="button" class="Submit" id="UsernameSubmit" role="default-button"></widget>
+          </div>
+          <div id="UpperMessage">&nbsp;</div>
+          <div id="PasswordField">
+            <widget type="password" id="Password" novalue="Password"></widget>
+            <widget type="button" id="ShowPassword" hidden tabindex="-1"></widget>
+            <widget type="button" class="Submit" id="PasswordSubmit" role="default-button"></widget>
+          </div>
+        </div>
+      </div>
+      <div class="SmallText" id="DomainNameText">
+        Log on to: <span id="DomainName" />
+      </div>
+      <div id="DomainHelpContainer">
+        <a href="#" id="DomainHelp" class="ServiceText">
+          How do I log on to another domain?
+        </a>
+      </div>
+
+      <div>
+        <a href="#" id="CustomCommand" class="ServiceText" />
+      </div>
+
+      <div id="Message" class="SmallText">&nbsp;</div>
+      <div id="MethodsContainer" />
+      <div class="HorizontalContainer">
+        <widget type="button" id="Back" class="button" role="cancel-button">Switch user</widget>
+      </div>
+    </div>
+  </div>
+  <div id="ErrorPage">
+    <div id="ErrorContainer">
+      <div id="ErrorImgContainer">
+        <img src="error.png" />
+      </div>
+      <div id="ErrorText" />
+    </div>
+    <div class="HorizontalContainer">
+      <widget type="button" class="button" id="ResetBtn">OK</widget>
+    </div>
+  </div>
+  <div class="VerticalContainer" id="BrandContainer">
+    <img id="Branding" src="logo.png" />
+  </div>
+</body>
+</html>
